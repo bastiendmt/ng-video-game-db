@@ -10,15 +10,18 @@ import { APIResponse, Game } from '../models';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  getGameList(ordering: string, search?: string):Observable<APIResponse<Game>> {
-    let params = new HttpParams().set('ordering', ordering)
+  getGameList(
+    ordering: string,
+    search?: string
+  ): Observable<APIResponse<Game>> {
+    let params = new HttpParams().set('ordering', ordering);
 
     if (search) {
-      params = new HttpParams().set('ordering', ordering).set('search', search)
+      params = new HttpParams().set('ordering', ordering).set('search', search);
     }
 
     return this.http.get<APIResponse<Game>>(`${environment.BASE_URL}/games`, {
-      params
-    })
+      params,
+    });
   }
 }
