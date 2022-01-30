@@ -10,11 +10,11 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public sort: string | undefined;
-  private router: Router | undefined;
-  public games: Array<Game> | undefined;
-  private gameSub: Subscription | undefined;
-  private routeSub: Subscription | undefined;
+  public sort: string;
+  private router: Router;
+  public games: Array<Game>;
+  private gameSub: Subscription;
+  private routeSub: Subscription;
 
   constructor(
     private httpService: HttpService,
@@ -44,12 +44,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.router.navigate(['details', id]);
   }
 
-  ngOnDestroy():void {
-    it (this.gameSub) {
-      this.gameSub.unsubscribe()
-    }
-    it (this.routeSub) {
-      this.routeSub.unsubscribe()
-    }
+  ngOnDestroy(): void {
+    this.gameSub.unsubscribe();
+
+    this.routeSub.unsubscribe();
   }
 }
