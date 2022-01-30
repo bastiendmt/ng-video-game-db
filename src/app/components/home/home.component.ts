@@ -11,13 +11,13 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public sort: string;
-  private router: Router;
   public games: Array<Game>;
   private gameSub: Subscription;
   private routeSub: Subscription;
 
   constructor(
     private httpService: HttpService,
+    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
